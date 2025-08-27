@@ -53,12 +53,12 @@ function App() {
     <div className="container" style={{ maxWidth: "500px", marginTop: "50px" }}>
       <div className="card shadow">
         <div className="card-body">
-          <h1 className="card-title text-center mb-4">📝 To-Do List</h1>
+          <h1 className="card-title text-center mb-4">To-Do: Lista de Tareas</h1>
           <form className="d-flex mb-3" onSubmit={addTodo}>
             <input
               type="text"
               className="form-control me-2"
-              placeholder="Nueva tarea..."
+              placeholder="Escribe una nueva tarea..."
               value={input}
               onChange={(e) => setInput(e.target.value)}
             />
