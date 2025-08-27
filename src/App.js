@@ -50,49 +50,48 @@ function App() {
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "50px auto", textAlign: "center" }}>
-      <h1>📝 To-Do List</h1>
-      <form onSubmit={addTodo}>
-        <input
-          type="text"
-          placeholder="Nueva tarea..."
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          style={{ padding: "8px", width: "70%" }}
-        />
-        <button type="submit" style={{ padding: "8px" }}>Agregar</button>
-      </form>
-      <ul style={{ listStyle: "none", padding: 0, marginTop: "20px" }}>
-        {todos.map(todo => (
-          <li key={todo.id} style={{ marginBottom: "10px" }}>
+    <div className="container" style={{ maxWidth: "500px", marginTop: "50px" }}>
+      <div className="card shadow">
+        <div className="card-body">
+          <h1 className="card-title text-center mb-4">📝 To-Do List</h1>
+          <form className="d-flex mb-3" onSubmit={addTodo}>
             <input
-              type="checkbox"
-              checked={todo.done || false}
-              onChange={() => toggleDone(todo.id, todo.done)}
+              type="text"
+              className="form-control me-2"
+              placeholder="Nueva tarea..."
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
             />
-            <span
-              style={{
-                textDecoration: todo.done ? "line-through" : "none",
-                marginLeft: "8px"
-              }}
-            >
-              {todo.text}
-            </span>
-            <button
-              onClick={() => deleteTodo(todo.id)}
-              style={{
-                marginLeft: "10px",
-                background: "red",
-                color: "white",
-                border: "none",
-                padding: "5px"
-              }}
-            >
-              X
-            </button>
-          </li>
-        ))}
-      </ul>
+            <button type="submit" className="btn btn-primary">Agregar</button>
+          </form>
+          <ul className="list-group">
+            {todos.map(todo => (
+              <li key={todo.id} className="list-group-item d-flex align-items-center justify-content-between">
+                <div className="d-flex align-items-center">
+                  <input
+                    type="checkbox"
+                    className="form-check-input me-2"
+                    checked={todo.done || false}
+                    onChange={() => toggleDone(todo.id, todo.done)}
+                  />
+                  <span
+                    style={{ textDecoration: todo.done ? "line-through" : "none" }}
+                  >
+                    {todo.text}
+                  </span>
+                </div>
+                <button
+                  onClick={() => deleteTodo(todo.id)}
+                  className="btn btn-danger btn-sm"
+                  title="Eliminar"
+                >
+                  X
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
